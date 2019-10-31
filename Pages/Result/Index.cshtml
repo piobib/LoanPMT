@@ -1,0 +1,31 @@
+﻿@page
+@model LoanAmortization.Pages.Result.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+
+    if (!string.IsNullOrEmpty(Convert.ToString(ViewData["message"])))
+    {
+        <h5 class="text-warning mb-lg-5">@Html.Raw(ViewData["message"])</h5>
+        <a class="btn btn-danger" href="LoanForm" role="button">Kliknij tutaj, aby powrócić do formularza</a>
+    }
+    else
+    {
+        <div class="row text-white">
+            <div class="col-sm-12 col-lg-6 m-auto">
+                <div class="row">
+                    <div class="col-sm-12 col-lg-6 mb-4 mt-2 border-bottom pb-4 text-sm-center text-lg-right">Kwota kredytu:</div>
+                    <div class="col-sm-12 col-lg-6 mb-4 mt-2 border-bottom pb-4 text-sm-center text-lg-left">@Model.pv @Model.currency</div>
+                    <div class="col-sm-12 col-lg-6 mb-4 mt-2 border-bottom pb-4 text-sm-center text-lg-right">Oprocentowanie:</div>
+                    <div class="col-sm-12 col-lg-6 mb-4 mt-2 border-bottom pb-4 text-sm-center text-lg-left">@Model.rate %</div>
+                    <div class="col-sm-12 col-lg-6 mb-4 mt-2 border-bottom pb-4 text-sm-center text-lg-right">Liczba rat:</div>
+                    <div class="col-sm-12 col-lg-6 mb-4 mt-2 border-bottom pb-4 text-sm-center text-lg-left">@Model.quantity</div>
+                    <div class="col-sm-12 col-lg-6 mb-4 mt-2 border-bottom pb-4 text-sm-center text-lg-right font-weight-bold text-warning h3">Wysokość raty:</div>
+                    <div class="col-sm-12 col-lg-6 mb-4 mt-2 border-bottom pb-4 text-sm-center text-lg-left font-weight-bold text-warning h3">@ViewData["pmt"] @Model.currency</div>
+                    <div class="col-12 mt-3 text-center"><a class="btn btn-success" href="LoanForm" role="button">Kliknij tutaj, aby ponownie obliczyć wysokość raty</a></div>
+                </div>
+            </div>
+        </div>
+    }
+}
+
